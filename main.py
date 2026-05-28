@@ -6,17 +6,19 @@ import heapq
 
 locations = [
     "St. Vincent",
-    "Cpt Cip",
-    "St. Lucia",
+    "Garcia Hospital",
+    "St. Victoria",
     "SDS Medical",
     "Amang",
     "Marikina Valley",
     "St. Anthony",
     "Concepcion Uno",
     "Parang",
-    "Nangka",
-    "Lilac St.",
+    "Malanday",
     "Santo Niño",
+    "Lilac St.",
+    "E. Santos St.",
+    "Katipunan St.",
 ]
 
 # =========================
@@ -24,57 +26,66 @@ locations = [
 # Format:
 # location: [(neighbor, distance, risk), ...]
 # Risk scale:
-# 1-3 = Low Risk
-# 4-6 = Medium Risk
-# 7-10 = High Risk
+# 2-4 = Low Risk
+# 5-7 = Medium Risk
+# 8-10 = High Risk
 # =========================
 
 graph = {
     "St. Vincent": [
-        ("Cpt Cip", 8, 3),
-        ("St. Lucia", 11, 4),
-        ("SDS Medical", 13, 5),
-        ("Amang", 12, 6),
-        ("Marikina Valley", 18, 7),
-        ("St. Anthony", 19, 8),
+        ("Garcia Hospital", 8, 7),
+        ("St. Victoria", 11, 5),
+        ("SDS Medical", 13, 6),
+        ("Amang", 12, 4),
+        ("Marikina Valley", 18, 3),
+        ("St. Anthony", 19, 2),
     ],
-    "Cpt Cip": [
-        ("St. Vincent", 8, 3),
-        ("Concepcion Uno", 7, 4),
-        ("Parang", 9, 5),
+    "Garcia Hospital": [
+        ("Concepcion Uno", 7, 3),
+        ("Parang", 9, 4),
     ],
-    "St. Lucia": [
-        ("St. Vincent", 11, 4),
-        ("Nangka", 8, 4),
+    "St. Victoria": [
+        ("Malanday", 8, 5),
     ],
     "SDS Medical": [
-        ("St. Vincent", 13, 5),
-        ("Lilac St.", 7, 3),
+        ("Lilac St.", 7, 7),
     ],
     "Amang": [
-        ("St. Vincent", 12, 6),
-        ("Santo Niño", 3, 2),
+        ("Santo Niño", 3, 7),
     ],
     "Marikina Valley": [
-        ("St. Vincent", 18, 7),
+        ("E.Santos St.", 10, 3),
     ],
     "St. Anthony": [
-        ("St. Vincent", 19, 8),
+        ("Katipunan St.", 9, 5),
     ],
     "Concepcion Uno": [
-        ("Cpt Cip", 7, 4),
+        ("Parang", 10, 2),
+        ("Malanday", 8, 4),
     ],
     "Parang": [
-        ("Cpt Cip", 9, 5),
+        ("Concepcion Uno", 10, 2),
+        ("Katipunan St.", 8, 3),
     ],
-    "Nangka": [
-        ("St. Lucia", 8, 4),
+    "Malanday": [
+        ("Concepcion Uno", 8, 4),
+        ("Lilac St.", 12, 2),
     ],
     "Lilac St.": [
-        ("SDS Medical", 7, 3),
+        ("Malanday", 12, 2),
+        ("Santo Niño", 11, 3),
     ],
     "Santo Niño": [
-        ("Amang", 3, 2),
+        ("Lilac St.", 11, 3),
+        ("E. Santos St.", 4, 5),
+    ],
+    "E. Santos St.": [
+        ("Santo Niño", 4, 5),
+        ("Katipunan St.", 11, 2),
+    ],
+    "Katipunan St.": [
+        ("E. Santos St.", 11, 2),
+        ("Parang", 8, 3),
     ],
 }
 
@@ -112,9 +123,9 @@ def get_location_choice(message):
 # =========================
 
 def get_risk_label(risk):
-    if risk <= 3:
+    if risk <= 4:
         return "Low Risk"
-    if risk <= 6:
+    if risk <= 7:
         return "Medium Risk"
     return "High Risk"
 
