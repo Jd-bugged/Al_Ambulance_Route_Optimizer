@@ -54,7 +54,7 @@ graph = {
         ("Santo Niño", 3, 7),
     ],
     "Marikina Valley": [
-        ("E.Santos St.", 10, 3),
+        ("E. Santos St.", 10, 3),
     ],
     "St. Anthony": [
         ("Katipunan St.", 9, 5),
