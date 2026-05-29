@@ -179,7 +179,7 @@ def dijkstra(start, destination, blocked_routes=None):
 def show_route(distance, risk, path):
     print("\nBest Route Found:")
     print(" -> ".join(path))
-    print(f"Total Distance: {distance}")
+    print(f"Total Time: {distance} minutes")
     print(f"Total Risk Score: {risk}")
     print(f"Risk Level: {get_risk_label(risk)}")
 
